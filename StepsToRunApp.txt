@@ -1,0 +1,6 @@
+1) Run the database script from Database folder
+2) change the databse connectionstring
+3) Run the web api project(backend)
+4) change the service url in angular project(environment files)
+5) Run npm install command in angular project to restore the dependent packages and files() from frontend folder
+6) Run ng s -o to run the application
