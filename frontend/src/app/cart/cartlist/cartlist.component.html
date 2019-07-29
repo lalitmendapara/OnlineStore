@@ -1,0 +1,33 @@
+<div class="container productlist">
+  <div class="card" *ngIf="cartService.navURLVal">
+    <div class="card-body">
+      <div class="row col-md-12 m-1 bg-light p-3">
+        <div class="col-md-8">
+          <h5>My Cart ({{cartList?.length}})</h5>
+        </div>
+        <div class="col-md-4">
+          <h5>Price : <i class="fa fa-usd" aria-hidden="true"> </i> {{TotalAmount()}} </h5>
+
+        </div>
+      </div>
+      <div class="row col-md-12 m-1 bg-light p-3" *ngFor="let row of cartList">
+        <div class="col-md-3">
+          <img class="img-thumbnail clsproductimg"
+            src="../../../assets/img/{{row.ProductImg?row.ProductImg:'blank_product.jpg'}}">
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title clsProductName" (click)="ViewCartitem(row)">{{row.ProductName}}</h5>
+          <p class="card-text" [innerHTML]="row.ProductDetails"></p>
+          <p class="card-text"><i class="fa fa-usd" aria-hidden="true"></i>{{row.Price}}</p>
+          <p class="card-text">Quantity: {{row.Quantity}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!cartService.navURLVal">
+    <div class="card-body">
+      <app-cartitem (isCartitem)="Cartitem($event)" [selectedCartItem]="selectedCartItem"></app-cartitem>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container productlist" [ngClass]="{'loader':isInitialLoadInProgress}">
+  <div class="card">
+    <div class="card-body">
+      <div class="row col-md-12 m-1 bg-light p-3"  appNghover *ngFor="let row of productList">
+        <div class="col-md-3">
+          <img class="img-thumbnail clsproductimg" src="../../../assets/img/{{row.ProductImg?row.ProductImg:'blank_product.jpg'}}">
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title">{{row.ProductName}}</h5>
+          <p class="card-text" [innerHTML]="row.ProductDetails"></p>
+          <p class="card-text"><i class="fa fa-usd" aria-hidden="true"></i>{{row.Price}}</p>
+          <a *ngIf="row.Quantity>0 && !row.IsInCart"  href="javascript:;" (click)="AddToCart(row)" class="btn btn-primary text-white">Add To
+            Cart</a>
+            <a class="btn btn-primary text-white" [routerLink]="['/cartlist']"  href="javascript:;" *ngIf="row.IsInCart">Go To Cart </a>
+          <p class="text-danger" *ngIf="!row.Quantity>0">Out Of Stock</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

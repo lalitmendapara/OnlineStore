@@ -1,0 +1,23 @@
+<nav class="navbar  navbarfixed navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand font-weight-bold text-white clspointer" [routerLink]="['/']">Online Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active" title="Products">
+        <a class="nav-link text-white clspointer" [routerLink]="['/productlist']">Products</a>
+      </li>
+    </ul>
+    <ul class="nav justify-content-end">
+      <li class="nav-item" title="My Cart" (click)="navValidator()">
+        <a class="nav-link text-white clspointer" [routerLink]="['/cartlist']"><i class="fa fa-shopping-cart"
+            aria-hidden="true"></i> <span class="badge badge-important clscart" *ngIf="count>0">{{count}}</span>
+          Cart</a>
+      </li>
+      <li></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,41 @@
+<div class="container productlist">
+  <div class="card">
+    <div class="card-body" *ngIf="selectedCartItem">
+      <div class="row col-md-12 m-1 bg-light p-3">
+        <div class="col-md-3">
+          <img class="img-thumbnail clsproductimg"
+            src="../../../assets/img/{{selectedCartItem.ProductImg?selectedCartItem.ProductImg:'blank_product.jpg'}}">
+
+          <div class="input-group mb-3 clsbutton">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+            </div>
+            <select class="custom-select" [(ngModel)]="selectedCartItem.Quantity" (change)="QuantityChanged($event)"
+              id="inputGroupSelect01">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <div *ngIf="OutOfStockMessage"
+              class="bootstrap-growl clsStockMessg alert bg-danger alert-danger alert-dismissible"
+              style="position: fixed; margin: 0px 0px 0px -200px; z-index: 9999; top: 70px; width: 400px; left: 50%;">
+              <button class="close" data-dismiss="alert" (click)="close()" type="button">
+                <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+              </button>
+              {{ OutOfStockMessage }}
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h5 class="card-title">{{selectedCartItem.ProductName}}</h5>
+          <p class="card-text" [innerHTML]="selectedCartItem.ProductDetails"></p>
+          <p class="card-text"><i class="fa fa-usd" aria-hidden="true"></i>{{selectedCartItem.Price}}</p>
+          <a href="javascript:;" (click)="RemoveFromCart()" class="btn btn-primary text-white">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
